@@ -10,23 +10,26 @@ export class DatabaseService implements OnModuleInit {
 
   async onModuleInit(): Promise<void> {
     try {
-      const config: sql.config = {
-        server: process.env.DB_SERVER || 'localhost',
-        database: process.env.DB_DATABASE || 'BookCatalog',
-        port: parseInt(process.env.DB_PORT || '1433', 10),
-        options: {
-          encrypt: false,
-          trustServerCertificate: true,
-        },
-        authentication: {
-          type: 'ntlm',
-          options: {
-            domain: '',
-            userName: '',
-            password: '',
-          },
-        },
-      };
+  const config: sql.config = {
+  server: process.env.DB_SERVER ?? '127.0.0.1',
+  database: process.env.DB_DATABASE ?? 'BookCatalog',
+  port: parseInt(process.env.DB_PORT ?? '1433', 10),
+  options: {
+    encrypt: false,
+    trustServerCertificate: true,
+    instanceName: process.env.DB_INSTANCE ?? 'SQLEXPRESS', // ✅ THIS is the key
+  },
+  authentication: {
+    type: 'ntlm',
+    options: {
+      domain: '',
+      userName: '',
+      password: '',
+    },
+  },
+};
+
+
 
       // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
       this.pool = await sql.connect(config);
