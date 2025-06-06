@@ -61,4 +61,14 @@ export class BooksController {
     const result = await this.booksService.deleteBook(id);
     return result;
   }
+  @Get('count/by-year')
+  async countByYear() {
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+    const counts = await this.booksService.countBooksByYear();
+    return {
+      message: 'Book counts by publication year',
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+      data: counts,
+    };
+  }
 }

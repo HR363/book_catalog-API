@@ -110,4 +110,14 @@ export class BooksService {
 
     return { message: `Book with ID ${id} deleted.` };
   }
+  async countBooksByYear() {
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+    const pool = this.db.getPool();
+
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+    const result = await pool.request().execute('CountBooksByYear');
+
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-return
+    return result.recordset; // e.g. [{ publication_year: 2022, count: 3 }]
+  }
 }
