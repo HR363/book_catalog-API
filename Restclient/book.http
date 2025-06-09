@@ -1,0 +1,33 @@
+### 1. Create a new book
+POST http://localhost:3000/books
+Content-Type: application/json
+
+{
+  "title": "Clean Code",
+  "author": "Robert C. Martin",
+  "publicationYear": 2008,
+  "isbn": "9780132350884"
+}
+
+### 2. Get all books
+GET http://localhost:3000/books
+
+### 3. Get book by ID
+GET http://localhost:3000/books/1
+
+### 4. Update book by ID
+PUT http://localhost:3000/books/1
+Content-Type: application/json
+
+{
+  "title": "Clean Code (Updated)",
+  "author": "Robert C. Martin",
+  "publicationYear": 2008,
+  "isbn": "9780132350884"
+}
+
+### 5. Delete book by ID
+DELETE http://localhost:3000/books/1
+
+### 6. Count books by publication year (stored procedure)
+GET http://localhost:3000/books/count/by-year

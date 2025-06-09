@@ -17,7 +17,7 @@ export class DatabaseService implements OnModuleInit {
   options: {
     encrypt: false,
     trustServerCertificate: true,
-    instanceName: process.env.DB_INSTANCE ?? 'SQLEXPRESS', // ✅ THIS is the key
+    instanceName: process.env.DB_INSTANCE ?? 'SQLEXPRESS',
   },
   authentication: {
     type: 'ntlm',
